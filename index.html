@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alcami</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://db.onlinewebfonts.com/c/a9db66cbaf8b1781ee08aeaae793c61b?family=NewRailAlphabet-White" rel="stylesheet">
+</head>
+<script>
+    function toggle(){
+        // console.log("clicked"); // Debugging
+
+    let navbar = document.querySelector(".navbar");
+    let searchBar = document.querySelector(".searchBar");
+
+    if (navbar.style.display === "none" || navbar.style.display === "") {
+        navbar.style.display = "flex"; // Show navbar
+        searchBar.style.display = "none"; // Hide search bar
+    } else {
+        navbar.style.display = "none"; // Hide navbar
+        searchBar.style.display = "flex"; // Show search bar
+    }
+    }
+    
+    document.addEventListener('DOMContentLoaded', () => {
+    const flavourRadios = document.querySelectorAll('input[name="flavour"]');
+    const purchaseRadios = document.querySelectorAll('input[name="purchase"]');
+    const addToCartBtn = document.getElementById('addToCartBtn');
+
+    function updateCartLink() {
+        let selectedFlavour = document.querySelector('input[name="flavour"]:checked')?.id || "item1";
+        let selectedPurchase = document.querySelector('input[name="purchase"]:checked')?.value || "single";
+
+        const newLink = `https://dummy.link/${selectedFlavour}-${selectedPurchase}`;
+        addToCartBtn.href = newLink;
+    }
+
+    flavourRadios.forEach(radio => radio.addEventListener('change', updateCartLink));
+    purchaseRadios.forEach(radio => radio.addEventListener('change', updateCartLink));
+
+    updateCartLink(); // Initial run
+});
+
+    // Function to animate count-up
+    function countUp(element, target, duration = 1500) {
+        let start = 0;
+        let startTime = null;
+
+        function animate(timestamp) {
+            if (!startTime) startTime = timestamp;
+            const progress = timestamp - startTime;
+            const value = Math.min(Math.floor(progress / duration * target), target);
+            element.textContent = value + '%';
+            if (value < target) {
+                requestAnimationFrame(animate);
+            }
+        }
+
+        requestAnimationFrame(animate);
+    }
+
+    // Intersection Observer setup
+    document.addEventListener("DOMContentLoaded", function () {
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const percentages = [
+                        { selector: '.percentage1', target: 84 },
+                        { selector: '.percentage2', target: 78 },
+                        { selector: '.percentage3', target: 89 },
+                        { selector: '.percentage4', target: 90 },
+                    ];
+
+                    percentages.forEach(({ selector, target }) => {
+                        const el = document.querySelector(selector);
+                        if (el && !el.classList.contains("counted")) {
+                            countUp(el, target);
+                            el.classList.add("counted");
+                        }
+                    });
+
+                    observer.disconnect(); // Optional: remove observer after triggering once
+                }
+            });
+        });
+
+        const section = document.querySelector('.percSum');
+        if (section) {
+            observer.observe(section);
+        }
+    });
+
+</script>
+<body>
+    <section class="bgmc">
+
+    </section>
+    <header>
+        <div id="topAd">
+            <div class="ad">
+                <p>GET 25% OFF YOUR FIRST MONTH. FREE SHIPPING ON U.S ORDERS.</p>
+            </div>
+        </div>
+        <div id="Container">
+            <div class="innerContainer">
+                <img class="logo" src="./assets/Column.png" alt="Logo">
+                <nav class="navbar">
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li class="shop"><a href="#">Shop</a><button class="navDrop"><img src="./assets/Vector.png" alt="dropdownIcon"></button></li>
+                        <li><a href="#">Elements</a></li>
+                        <li><a href="#">About us</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </nav>
+                <div class="searchBar" style="display: none;">
+                    <input type="text" name="search" id="searchPl" placeholder="           Search For Products...">
+                </div>
+
+                <div class="searchSub">
+                    <button class="search" onclick="toggle()"><img src="./assets/_x32_-Magnifying_Glass.png" alt="searchIcon"></button>
+                    <button class="submit"><img src="./assets/Button - Large.png" alt="try alcami button"></button>
+                </div>   
+            </div>
+        </div>
+    </header>
+
+    <div id="hero">
+        <div class="heroContent">
+            <div class="heroText">
+                <img src="./assets/Frame 1000004268.png" alt="heroContent">
+                <button class="shopNow">
+                    <img src="./assets/Button - Largehero.png" alt="shopNow">
+                </button>
+            </div>
+        </div>
+        <img class="product" src="./assets/Frame 1000004271.png" alt="product">
+    </div>
+
+    <section class="quote">
+        <div>
+            <img src="./assets/Group 1000004268.png" alt="quote">
+        </div>
+    </section>
+
+    <section class="heroAd">
+        <div class="heroAdimage">
+            <img class="productImage" src="./assets/Group 1000004149.png" alt="Alcami Product with Ingredients">
+        </div>
+        <div class="heroAdContent">
+            <div class="heroAdContent1">
+                <p class="headingPara">9 POWERFUL ELEMENTS</p>
+                <h1>All of the Best Ingredients, None of the Compromise</h1>
+                <p class="description">Alcami uses <span>x10 potency</span> in every serving, formulated for maximum absorption to ensure your body gets the most out of every scoop.</p>
+                <button class="heroAdbtn"><img src="./assets/midbut.png" alt="her ad button"></button>
+            </div>
+        </div>
+    </section>
+
+    <section class="guaranteeImg">
+        <img src="./assets/Group 1000004010.png" alt="guaranteeImg">
+    </section>
+
+    <section class="alcamiMid">
+        <div class="partnerTemp">
+            <img class="partners" src="./assets/Group 1000004264.png" alt="partners">
+        </div>
+        <div class="alcamiElements">
+            <div class="alcamiElementsImg">
+                <img class="initialImg" src="./assets/Group 1000004277.png" alt="Elements with Ingredients">
+                <div class="imgSlider">
+                    <button class="leftSlide"><img class="left" src="./assets/Button.jpg" alt="left imgSlider"></button>
+                    <div class="dotNavs">
+                        <span class="dot1"><img src="./assets/Dot (1).png" alt="nav dots"></span>
+                        <span class="dot2"><img src="./assets/Dot.png" alt="nav dots"></span>
+                        <span class="dot3"><img src="./assets/Dot (1).png" alt="nav dots"></span>
+                        <span class="dot4"><img src="./assets/Dot (1).png" alt="nav dots"></span>
+                    </div>
+                    <button class="rightSlide"><img class="right" src="./assets/Slider Buttons.png" alt="right imgSlider"></button>
+                </div>
+                <div class="imgThumbnails">
+                    <img src="./assets/Rectangle 6683.png" alt="product1">
+                    <img src="./assets/Rectangle 6684.png" alt="product2">
+                    <img src="./assets/Rectangle 6685.png" alt="product3">
+                    <img src="./assets/Rectangle 6686.png" alt="product4">
+                    <img src="./assets/Group 1000003953.png" alt="product5">
+                    <img src="./assets/Group 1000003954.png" alt="product6">
+                    <img src="./assets/Group 1000003955.png" alt="product7">
+                    <img src="./assets/Group 1000003956.png" alt="product8">
+                </div>
+            </div>
+            <div class="alcamiElementsContent">
+                <div class="alcamiTop">
+                    <div class="alcamiTopHead">
+                        <p class="alcamiElementsHeading">Alcami Elements</p>
+                        <img class="rating" src="./assets/Frame 1000003847.png" alt="Rating">
+                    </div>
+                    <p class="alcamiMidDes">Discover the ancient wisdom supported by modern science, all within the synergy of Alcami Elements. Designed for those who aspire to elevate every facet of life with awareness and intention.</p>
+                </div>
+                <div class="alcamiFlavours">
+                    <p class="flavour">Choose a flavor</p>
+                    <div class="itemFlavours">
+                        <div class="item1">
+                            <input type="radio" id="item1" name="flavour" value="item1">
+                            <label for="item1" class="item1Label">Original</label>
+                            <img class="product1" src="./assets/9 2.png" alt="item1">
+                            <img class="bestSeller" src="./assets/best seller tag.png" alt="best seller">
+                        </div>
+                        <div class="item2">
+                            <input type="radio" id="item2" name="flavour" value="item2">
+                            <label for="item2" class="item2Label">Matcha</label>
+                            <img class="product2" src="./assets/green1_1 1.png" alt="item2">
+                        </div>
+                        <div class="item3">
+                            <input type="radio" id="item3" name="flavour" value="item3">
+                            <label for="item3" class="item3Label">Cacao</label>
+                            <img class="product3" src="./assets/green2_1 2.png" alt="item3">
+                        </div>
+                    </div>
+                </div>
+                <div class="subscription">
+                    <!-- Purchase Type Options -->
+                    <div class="purchaseType">
+                        <p class="flavour">Choose a purchase option</p>
+                        <div class="purchaseOptions">
+                            <div class="option1">
+                                <div class="mostPopular">
+                                    <p class="mostPopularText">Most popular</p>
+                                </div>
+                                <input type="radio" id="single" name="purchase" value="single" checked>
+                                <label class="singleLabel" for="single">Single Kit Subscription</label>
+                                <img class="singlePrice" src="./assets/Frame 1000003965.png" alt="price">
+                                <img src="./assets/Vector 12.png" alt="horizontal rule" class="hr">
+                                <p class="amenities">What’s Included:</p>
+                                <img class="amenityImg1" src="./assets/Group 1000003965.png" alt="amenity">
+                                <img class="amenityImg2" src="./assets/Group 1000003966.png" alt="amenity2">
+                                <img class="amenityList" src="./assets/Group 1000003959.png" alt="amenityList">
+                            </div>
+                            <div class="option2">
+                                <input type="radio" id="double" name="purchase" value="double">
+                                <label class="doubleLabel" for="double">Double Kit Subscription</label>
+                                <img class="secondPrice" src="./assets/Frame 1000003869.png" alt="secondPrice">
+                            </div>
+                            <div class="option3">
+                                <input type="radio" id="once" name="purchase" value="once">
+                                <label class="onceLabel" for="once">Try Once</label>
+                                <img class="oncePrice" src="./assets/Frame 1000003870.png" alt="oncePrice">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="addToCartContainer">
+                    <a id="addToCartBtn" href="https://dummy.link/item1-single" class="addToCartBtn"><img src="./assets/addtocartbutton.png" alt="addtocart"></a>
+                </div>
+            </div>
+        </div>
+        <div class="features">
+            <img class="features" src="./assets/Frame 1000004226.png" alt="features">
+        </div>
+    </section>
+
+    <section class="himalayanProduct">
+        <div class="himalayanImg">
+            <img class="himalayanShilajit" src="./assets/Group 1000004262.png" alt="himalayan Shilajit">
+        </div>
+        <div class="himalayanContent">
+            <div class="text">
+                <img class="shilajitText" src="./assets/Frame 1000004232.png" alt="himalayan text">
+            </div>
+            <div class="shilaitTry">
+                <button class="tryShilajit"><img src="./assets/Group 1000004239.png" alt=""></button>
+            </div>
+        </div>
+    </section>
+
+    <section class="totalSubs">
+        <img class="subs" src="./assets/Group 1000004062.png" alt="subs">
+        <button class="subsNow"><img class="subscribe" src="./assets/subsNow.png" alt="Subscribe Try"></button>
+    </section>
+
+    <section class="morningRitual">
+        <div class="morningRitualcontent">
+            <p class="ritualHeading">Your morning ritual,<br> made to awaken your mind.</p>
+            <p class="ritualPara">Transform your mornings with a simple, potent, and powerful<br> ritual that fuels your day.</p>
+            <p class="one">1</p>  
+            <p class="two">2</p>  
+            <p class="three">3</p>  
+            <img src="./assets/Frame 1000003974.png" alt="firstPara" class="firstPara">
+            <img src="./assets/Frame 1000003972.png" alt="secondPara" class="secondPara">
+            <img src="./assets/Frame 1000003973.png" alt="thirdPara" class="thirdPara">
+            <button class="alcamiUse"><img class="alcamimorningbut" src="./assets/AlcamiUse.png" alt="try alcami morning routine"></button>
+        </div>
+        <div class="morningRitualVid">
+            <img class="morningVid" src="./assets/Frame 1000003856.png" alt="alcami morning ritual video">
+        </div>
+    </section>
+
+    <section class="percSum">
+        <div class="percent">
+            <div class="percent1">
+                <p class="percentage1">84%</p>
+                <p class="percentText1">Reported increased energy throughout their day</p>
+            </div>
+            <div class="percent2">
+                <p class="percentage2">78%</p>
+                <p class="percentText2">Reported feeling more focused</p>
+            </div>
+            <div class="percent3">
+                <p class="percentage3">89%</p>
+                <p class="percentText3">Reported a sense of calmness & steady mood</p>
+            </div>
+            <div class="percent4">
+                <p class="percentage4">90%</p>
+                <p class="percentText4">Reported feeling an overall increased wellness in their gut skin, hair, and physical health</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="htmlTable">
+        <div class="tableHeading">
+            <img class="TableHead" src="./assets/Frame 1000004187.png" alt="table heading">
+        </div>
+        <div class="table">
+            <table cellspacing="0" cellpadding="0">
+                <tr>
+                  <th class="rc1">BENEFITS</th>
+                  <th class="highlight">
+                    <img src="./assets/Group 1000004283.png" alt="ALCAMI" class="product-image"><br>
+                  </th>
+                  <th>
+                    <img src="./assets/31Yo+tgyOlL._SY300_SX300_ 1.png" alt="MUD/WTR" class="product-image"><br>
+                    MUD/WTR
+                  </th>
+                  <th>
+                    <img src="./assets/71apr2WjcPL.__AC_SX300_SY300_QL70_FMwebp_ 1.png" alt="RYZE" class="product-image"><br>
+                    RYZE
+                  </th>
+                  <th>
+                    <img src="./assets/71pgZLjoKuL._SX679_ 1.png" alt="EVERYDAY DOSE" class="product-image"><br>
+                    EVERYDAY DOSE
+                  </th>
+                </tr>
+            
+                <tr>
+                  <td>Potency Concentration</td>
+                  <td class="highlight">10x</td>
+                  <td>1x</td>
+                  <td>1x</td>
+                  <td>10x</td>
+                </tr>
+            
+                <tr>
+                  <td>Extracts Concentrates</td>
+                  <td class="highlight"><span class="check"><img src="./assets/Frame 1000004036.svg" alt=""></span></td>
+                  <td><span class="cross"><img src="./assets/Frame 1000004043.png" alt=""></span></td>
+                  <td><span class="cross"><img src="./assets/Frame 1000004043.png" alt=""></span></td>
+                  <td><span class="cross"><img src="./assets/Frame 1000004043.png" alt=""></span></td>
+                </tr>
+            
+                <tr>
+                  <td>Effects You Can Feel</td>
+                  <td class="highlight"><span class="check"><img src="./assets/Frame 1000004036.svg" alt=""></span></td>
+                  <td><span class="cross"><img src="./assets/Frame 1000004043.png" alt=""></span></td>
+                  <td><span class="cross"><img src="./assets/Frame 1000004043.png" alt=""></span></td>
+                  <td><span class="cross"><img src="./assets/Frame 1000004043.png" alt=""></span></td>
+                </tr>
+            
+                <tr>
+                  <td># of Beneficial Ingredients</td>
+                  <td class="highlight">9</td>
+                  <td>5</td>
+                  <td>6</td>
+                  <td>2</td>
+                </tr>
+            
+                <tr>
+                  <td>Incredible Taste</td>
+                  <td class="highlight"><span class="check"><img src="./assets/Frame 1000004036.svg" alt=""></span></td>
+                  <td><span class="cross"><img src="./assets/Frame 1000004043.png" alt=""></span></td>
+                  <td><span class="cross"><img src="./assets/Frame 1000004043.png" alt=""></span></td>
+                  <td><span class="cross"><img src="./assets/Frame 1000004043.png" alt=""></span></td>
+                </tr>
+            
+                <tr>
+                  <td>No Caffeine</td>
+                  <td class="highlight"><span class="check"><img src="./assets/Frame 1000004036.svg" alt=""></span></td>
+                  <td><span class="cross"><img src="./assets/Frame 1000004043.png" alt=""></span></td>
+                  <td><span class="check"><img src="./assets/Frame 1000004063.svg" alt=""></span></td>
+                  <td><span class="cross"><img src="./assets/Frame 1000004043.png" alt=""></span></td>
+                </tr>
+            
+                <tr>
+                  <td>No Starch or Myceliated Oats</td>
+                  <td class="highlight"><span class="check"><img src="./assets/Frame 1000004036.svg" alt=""></span></td>
+                  <td><span class="check"><img src="./assets/Frame 1000004063.svg" alt=""></span></td>
+                  <td><span class="cross"><img src="./assets/Frame 1000004043.png" alt=""></span></td>
+                  <td><span class="check"><img src="./assets/Frame 1000004063.svg" alt=""></span></td>
+                </tr>
+            
+                <tr>
+                  <td>100% Fruiting Body Mushroom</td>
+                  <td class="highlight"><span class="check"><img src="./assets/Frame 1000004036.svg" alt=""></span></td>
+                  <td><span class="cross"><img src="./assets/Frame 1000004043.png" alt=""></span></td>
+                  <td><span class="cross"><img src="./assets/Frame 1000004043.png" alt=""></span></td>
+                  <td><span class="cross"><img src="./assets/Frame 1000004043.png" alt=""></span></td>
+                </tr>
+              </table>
+        </div>
+        <div class="riskbut"><button class="risk"><img src="./assets/risk.png" alt=""></button></div>
+    </section>
+
+    <section class="founders">
+        <div class="founderVid">
+            <img src="./assets/Frame 1000004191.png" alt="founder section">
+        </div>
+        <button class="aboutus"><img src="./assets/aboutUs.png" alt="about us"></button>
+    </section>
+
+    <section class="testimonials">
+        <div class="testimonialHead">
+            <p class="customerReview">What our customers are saying</p>
+            <p class="trust">Real people, real reviews.</p>
+            <button class="leftcard"><img src="./assets/Screenshot 2025-04-06 215029.png" alt="left"></button>
+            <button class="rightcard"><img src="./assets/Screenshot 2025-04-06 215055.png" alt="right"></button>
+        </div>
+        <div class="cards">
+            <img src="./assets/Screenshot 2025-04-06 214409.png" alt="card1" class="card card1">
+            <img src="./assets/Screenshot 2025-04-06 214409.png" alt="card1" class="card card2">
+            <img src="./assets/Screenshot 2025-04-06 214409.png" alt="card1" class="card card3">
+            <img style="display: none;" src="./assets/Screenshot 2025-04-06 214409.png" alt="card1" class="card card4">
+
+        </div>
+    </section>
+
+    <section class="faqs">
+        <div class="faqtext">
+            <p class="faqheader">F.A.Qs</p>
+            <p class="faqpara">If you have any question that isn’t answered in our FAQs, we’d love to hear from you!</p>
+            <button class="getintouch"><img class="gettouched" src="./assets/getintouch.png" alt="get in touch"></button>
+        </div>
+        <div class="questions">
+            <div class="question">
+                <button class="expand"><img src="./assets/Accordion Item5.png" alt=""></button>
+            </div>
+            <div class="question">
+                <button class="expand"><img src="./assets/Accordion Item4.png" alt=""></button>
+            </div>
+            <div class="question">
+                <button class="expand"><img src="./assets/Accordion Item3.png" alt=""></button>
+            </div>
+            <div class="question">
+                <button class="expand"><img src="./assets/Accordion Item2.png" alt=""></button>
+            </div>
+            <div class="question">
+                <button class="expand"><img src="./assets/Accordion Item.png" alt=""></button>
+            </div>
+            <a href="#" class="allfaqsanch"><img class="allfaqs" src="./assets/Frame 1000004246.png" alt="get all faqs"></a>
+        </div>
+    </section>
+
+    <section class="preFooter">
+        <div class="prefoot">
+            <img src="./assets/Frame 1000004205.png" alt="all pre footer" class="allpre">
+        </div>
+        <div class="inpbut">
+            <input class="subscribeText" type="text" placeholder=""><br>
+            <button class="subscribe1"><img src="./assets/subscribe.png" alt="subs"></button>
+        </div>
+    </section>
+
+    <footer class="end">
+        <div class="fullFooter">
+            <img src="./assets/Frame 30.png" alt="full footer" class="footimg">
+        </div>
+        <div class="contact">
+            <input type="text" class="email">
+            <button class="emailSub"><img src="./assets/Button.png" alt="subscribe"></button>
+        </div>
+    </footer>
+</body>
+</html>
